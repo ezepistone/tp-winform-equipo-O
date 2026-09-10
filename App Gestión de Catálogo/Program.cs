@@ -16,7 +16,7 @@ namespace App_Gestión_de_Catálogo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Principal());
 
         }
     }
