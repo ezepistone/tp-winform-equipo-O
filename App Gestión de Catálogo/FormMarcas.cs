@@ -16,5 +16,15 @@ namespace App_Gestión_de_Catálogo
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMarcas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

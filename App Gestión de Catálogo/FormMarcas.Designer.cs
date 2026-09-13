@@ -28,28 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textTituloMarcas = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMarcas));
+            this.labelTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textTituloMarcas
+            // labelTitulo
             // 
-            this.textTituloMarcas.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textTituloMarcas.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTituloMarcas.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.textTituloMarcas.Location = new System.Drawing.Point(12, 12);
-            this.textTituloMarcas.Name = "textTituloMarcas";
-            this.textTituloMarcas.Size = new System.Drawing.Size(776, 26);
-            this.textTituloMarcas.TabIndex = 3;
-            this.textTituloMarcas.Text = "MARCAS";
+            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitulo.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.labelTitulo.Location = new System.Drawing.Point(694, 9);
+            this.labelTitulo.Name = "labelTitulo";
+            this.labelTitulo.Size = new System.Drawing.Size(182, 55);
+            this.labelTitulo.TabIndex = 4;
+            this.labelTitulo.Text = "Marcas";
+            this.labelTitulo.Click += new System.EventHandler(this.label1_Click);
             // 
             // FormMarcas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textTituloMarcas);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1399, 865);
+            this.Controls.Add(this.labelTitulo);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormMarcas";
             this.Text = "FormMarcas";
+            this.Load += new System.EventHandler(this.FormMarcas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -57,6 +64,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textTituloMarcas;
+        private System.Windows.Forms.Label labelTitulo;
     }
 }
