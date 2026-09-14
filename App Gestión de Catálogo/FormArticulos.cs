@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace App_Gestión_de_Catálogo
         public FormArticulos()
         {
             InitializeComponent();
+        }
+
+        private void FormArticulos_Load(object sender, EventArgs e)
+        {
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            dgv.DataSource = negocio.Listar();
+            dgv.Columns["IdMarca"].Visible = false;
+            dgv.Columns["IdCategoria"].Visible = false;
         }
     }
 }

@@ -52,11 +52,11 @@
     <Compile Include="Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormArticulos.cs.cs">
+    <Compile Include="FormArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormArticulos.cs.Designer.cs">
-      <DependentUpon>FormArticulos.cs.cs</DependentUpon>
+    <Compile Include="FormArticulos.Designer.cs">
+      <DependentUpon>FormArticulos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCategorias.cs">
       <SubType>Form</SubType>
@@ -72,8 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormArticulos.cs.resx">
-      <DependentUpon>FormArticulos.cs.cs</DependentUpon>
+    <EmbeddedResource Include="FormArticulos.resx">
+      <DependentUpon>FormArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCategorias.resx">
       <DependentUpon>FormCategorias.cs</DependentUpon>

@@ -1,9 +1,18 @@
-﻿namespace App_Gestión_de_Catálogo
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dominio
 {
-    public class Marca : EntidadBase
+    public class Marca
     {
-        public Marca(int id, string nombre) : base(id, nombre) { }
-        //sobrecarga de  constructor
-        public Marca() { }
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public override string ToString()
+        {
+            return Descripcion;
+        }
     }
 }
