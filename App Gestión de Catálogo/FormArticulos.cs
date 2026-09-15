@@ -27,5 +27,33 @@ namespace App_Gestión_de_Catálogo
             dgv.Columns["IdMarca"].Visible = false;
             dgv.Columns["IdCategoria"].Visible = false;
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ///aca va ir el evento de busqueda por texto
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Crear artículo");
+            //FormArticulos fmr = new FormArticulos(); //falta programar el FormArticulo.cs para crear un artículo
+            //fmr.ShowDialog();
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Seleccionar un artículo para modificar"); ///falta programar el FormArticulo.cs para modificar un artículo
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Seleccionar un artículo para eliminar"); ///falta programar el FormArticulo.cs para eliminar un artículo
+        }
+
+        private void btnVerDetalle_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Seleccionar un artículo para ver el detalle");
+        }
     }
 }

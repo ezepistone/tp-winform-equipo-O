@@ -28,23 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCategorias));
+            this.textTituloArticulos = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // textTituloArticulos
+            // 
+            this.textTituloArticulos.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textTituloArticulos.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTituloArticulos.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.textTituloArticulos.Location = new System.Drawing.Point(12, 12);
+            this.textTituloArticulos.Name = "textTituloArticulos";
+            this.textTituloArticulos.Size = new System.Drawing.Size(776, 26);
+            this.textTituloArticulos.TabIndex = 2;
+            this.textTituloArticulos.Text = "CATEGORÍAS";
             // 
             // FormCategorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1600, 865);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textTituloArticulos);
             this.Name = "FormCategorias";
             this.Text = "FormCategorias";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox textTituloArticulos;
     }
 }
