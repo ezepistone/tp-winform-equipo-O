@@ -10,7 +10,6 @@ namespace Negocio
 {
     public class AccesoDatos
     {
-
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
@@ -22,8 +21,6 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            string cadenaConexion = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true; TrustServerCertificate=True;";
-            conexion = new SqlConnection(cadenaConexion);
             comando = new SqlCommand();
         }
 
@@ -37,15 +34,14 @@ namespace Negocio
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
             comando.Parameters.Clear();
-
         }
 
         public void ejecutarLectura()
         {
-            comando.Connection = conexion;
             try
             {
                 abrirConexion();
+                comando.Connection = conexion;
                 lector = comando.ExecuteReader();
             }
             catch (Exception)
@@ -56,10 +52,10 @@ namespace Negocio
 
         public void ejecutarAccion()
         {
-            comando.Connection = conexion;
             try
             {
                 abrirConexion();
+                comando.Connection = conexion;
                 comando.ExecuteNonQuery();
             }
             catch (Exception)
@@ -73,6 +69,7 @@ namespace Negocio
             try
             {
                 abrirConexion();
+                comando.Connection = conexion;
                 return comando.ExecuteScalar();
             }
             catch (Exception ex)
@@ -90,11 +87,22 @@ namespace Negocio
 
         public void abrirConexion()
         {
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null && conexion.State == ConnectionState.Open)
+                return;
+
+            string cadenaConexion1 = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true; TrustServerCertificate=True;";
+            string cadenaConexion2 = "server=localhost; database=CATALOGO_P3_DB; integrated security=true; TrustServerCertificate=True;";
+
+            try
             {
+                conexion = new SqlConnection(cadenaConexion1);
+                conexion.Open();
+            }
+            catch (Exception)
+            {
+                conexion = new SqlConnection(cadenaConexion2);
                 conexion.Open();
             }
         }
-
     }
 }
