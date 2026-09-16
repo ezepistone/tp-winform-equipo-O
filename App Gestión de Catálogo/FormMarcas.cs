@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,23 @@ namespace App_Gestión_de_Catálogo
         private void FormMarcas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AccesoDatos ad = new AccesoDatos();
+            ad.SetearConsulta("SELECT * FROM MARCAS");
+            ad.ejecutarLectura();
+
+            string resultado = "";
+            while (ad.Lector.Read())
+            {
+                resultado = resultado + ad.Lector["Descripcion"].ToString() + "\n";
+            }
+
+            ad.cerrarConexion();
+
+            MessageBox.Show(resultado);
         }
     }
 }
