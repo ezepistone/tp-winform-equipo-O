@@ -92,5 +92,34 @@ namespace Negocio
             }
         }
 
+            public int Agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(@"INSERT INTO ARTICULOS
+                                      (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio)
+                                      VALUES
+                                      (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio);
+                                        SELECT SCOPE_IDENTITY()");
+
+                datos.SetearParametro("@Codigo", nuevo.Codigo);
+                datos.SetearParametro("@Nombre", nuevo.Nombre);
+                datos.SetearParametro("@Descripcion", nuevo.Descripcion);
+                datos.SetearParametro("@IdMarca", nuevo.IdMarca);
+                datos.SetearParametro("@IdCategoria", nuevo.IdCategoria);
+                datos.SetearParametro("@Precio", nuevo.Precio);
+
+                return (int)(decimal)datos.ejecutarScalar();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally { datos.cerrarConexion(); }
+         
     }
 }
+}
+    

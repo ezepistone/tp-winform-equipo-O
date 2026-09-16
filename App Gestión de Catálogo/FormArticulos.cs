@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,6 +55,17 @@ namespace App_Gestión_de_Catálogo
         private void btnVerDetalle_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Seleccionar un artículo para ver el detalle");
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Articulo seleccionado = (Articulo)dgv.CurrentRow.DataBoundItem;
+
+                FormArticulo frmArt = new FormArticulo(seleccionado);
+                frmArt.ShowDialog();
+            }
         }
     }
 }

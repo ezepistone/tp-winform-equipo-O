@@ -41,12 +41,16 @@
             // 
             // dgv
             // 
+            this.dgv.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.GridColor = System.Drawing.SystemColors.Window;
             this.dgv.Location = new System.Drawing.Point(24, 95);
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(743, 296);
             this.dgv.TabIndex = 0;
+            this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
             // textTituloArticulos
             // 
