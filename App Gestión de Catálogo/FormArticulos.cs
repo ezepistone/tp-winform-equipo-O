@@ -36,25 +36,43 @@ namespace App_Gestión_de_Catálogo
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Crear artículo");
-            //FormArticulos fmr = new FormArticulos(); //falta programar el FormArticulo.cs para crear un artículo
-            //fmr.ShowDialog();
+             { FormArticulo frm = new FormArticulo(); frm.ShowDialog(); } 
 
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Seleccionar un artículo para modificar"); ///falta programar el FormArticulo.cs para modificar un artículo
+            if(dgv.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgv.CurrentRow.DataBoundItem;
+                FormArticulo frm = new FormArticulo(seleccionado);
+                frm.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un artículo para modificar");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Seleccionar un artículo para eliminar"); ///falta programar el FormArticulo.cs para eliminar un artículo
+            MessageBox.Show("Seleccionar un artículo para eliminar"); 
         }
 
         private void btnVerDetalle_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Seleccionar un artículo para ver el detalle");
+            if (dgv.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgv.CurrentRow.DataBoundItem;
+                FormDetalleArticulo frm = new FormDetalleArticulo (seleccionado);
+                frm.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un artículo para ver el detalle");
+            }
         }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
