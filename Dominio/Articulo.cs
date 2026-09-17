@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Dominio
 {
@@ -18,7 +19,13 @@ namespace Dominio
 
         public Marca Marca { get; set;}
         public Categoria Categoria { get; set;}
+        // Lista de imagenes 
+        public List<Imagen> Imagenes { get; set; }
 
+        public Articulo()
+        {
+            Imagenes = new List<Imagen>();
+        }
     }
 }
 
