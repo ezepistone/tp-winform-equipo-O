@@ -54,6 +54,7 @@ namespace Negocio
                     }
                     else
                     {
+                        aux.Marca = new Marca();
                         aux.Marca.Descripcion = "Sin Marca";
                     }
 
@@ -74,6 +75,7 @@ namespace Negocio
                     }
                     else
                     {
+                        aux.Categoria = new Categoria();
                         aux.Categoria.Descripcion = "Sin Categoría";
                     }
 
@@ -92,7 +94,7 @@ namespace Negocio
             }
         }
 
-            public int Agregar(Articulo nuevo)
+        public int Agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -117,9 +119,45 @@ namespace Negocio
             {
                 throw;
             }
-            finally { datos.cerrarConexion(); }
-         
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(@"UPDATE ARTICULOS SET
+                                      Codigo = @Codigo,
+                                      Nombre = @Nombre,
+                                      Descripcion = @Descripcion,
+                                      IdMarca = @IdMarca,
+                                      IdCategoria = @IdCategoria,
+                                      Precio = @Precio
+                                      WHERE Id = @Id");
+
+                datos.SetearParametro("@Codigo", articulo.Codigo);
+                datos.SetearParametro("@Nombre", articulo.Nombre);
+                datos.SetearParametro("@Descripcion", articulo.Descripcion);
+                datos.SetearParametro("@IdMarca", articulo.IdMarca);
+                datos.SetearParametro("@IdCategoria", articulo.IdCategoria);
+                datos.SetearParametro("@Precio", articulo.Precio);
+                datos.SetearParametro("@Id", articulo.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
-}
-    

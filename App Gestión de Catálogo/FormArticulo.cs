@@ -30,6 +30,15 @@ namespace App_Gestión_de_Catálogo
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
+            // Primero se cargan los combos con los datos de la base...
+            cbMarca.DataSource = marcaNegocio.Listar();
+            cbMarca.ValueMember = "Id";
+            cbMarca.DisplayMember = "Descripcion";
+            cbCategoria.DataSource = categoriaNegocio.Listar();
+            cbCategoria.ValueMember = "Id";
+            cbCategoria.DisplayMember = "Descripcion";
+
+            // ...y recien despues se puede seleccionar un valor existente.
             if (articulo != null)
             {
                 txtCodigo.Text = articulo.Codigo;
@@ -41,14 +50,52 @@ namespace App_Gestión_de_Catálogo
 
                 txtPrecio.Text = articulo.Precio.ToString();
             }
+        }
 
-            cbMarca.DataSource = marcaNegocio.Listar();
-            cbMarca.ValueMember = "Id";
-            cbMarca.DisplayMember = "Descripcion";
-            cbCategoria.DataSource = categoriaNegocio.Listar();
-            cbCategoria.ValueMember = "Id";
-            cbCategoria.DisplayMember = "Descripcion";
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal precio = decimal.Parse(txtPrecio.Text);
+
+                if (articulo == null)
+                {
+                    // Es un articulo nuevo
+                    articulo = new Articulo();
+                }
+
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.IdMarca = (int)cbMarca.SelectedValue;
+                articulo.IdCategoria = (int)cbCategoria.SelectedValue;
+                articulo.Precio = precio;
+
+                ArticuloNegocio negocio = new ArticuloNegocio();
+
+                if (articulo.Id == 0)
+                {
+                    negocio.Agregar(articulo);
+                }
+                else
+                {
+                    negocio.Modificar(articulo);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Revisa los datos ingresados (el precio debe ser un numero valido)");
+            }
+        }
+
+       
     }
 }
