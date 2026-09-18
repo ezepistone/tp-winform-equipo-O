@@ -160,6 +160,52 @@ namespace Negocio
             }
         }
 
+        public List<Articulo> Buscar(string texto)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta(@"
+        SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio,A.IdMarca, M.Descripcion AS MarcaDescripcion, A.IdCategoria, C.Descripcion AS CategoriaDescripcion
+        FROM ARTICULOS A
+        INNER JOIN MARCAS M ON A.IdMarca = M.Id
+        INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id
+        WHERE A.Nombre LIKE @texto
+           OR M.Descripcion LIKE @texto");
+
+                datos.SetearParametro("@texto", "%" + texto + "%");
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)datos.Lector["MarcaDescripcion"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Descripcion = (string)datos.Lector["CategoriaDescripcion"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void Eliminar(int id)
         {
             AccesoDatos datos = new AccesoDatos();

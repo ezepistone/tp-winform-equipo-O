@@ -31,7 +31,16 @@ namespace App_Gestión_de_Catálogo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            ///aca va ir el evento de busqueda por texto
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                dgv.DataSource = negocio.Buscar(txtBuscar.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -105,6 +114,12 @@ namespace App_Gestión_de_Catálogo
                 FormArticulo frmArt = new FormArticulo(seleccionado);
                 frmArt.ShowDialog();
             }
+        }
+
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgv.DataSource = negocio.Listar();
         }
     }
 }
