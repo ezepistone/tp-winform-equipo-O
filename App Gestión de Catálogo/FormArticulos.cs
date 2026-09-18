@@ -57,7 +57,28 @@ namespace App_Gestión_de_Catálogo
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Seleccionar un artículo para eliminar"); 
+            Articulo seleccionado;
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Desea eliminar el artículo?",
+                    "Eliminar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgv.CurrentRow.DataBoundItem;
+                    negocio.Eliminar(seleccionado.Id);
+                    dgv.DataSource = negocio.Listar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnVerDetalle_Click(object sender, EventArgs e)

@@ -159,5 +159,21 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void Eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.SetearConsulta("DELETE FROM ARTICULOS WHERE Id = @Id");
+                datos.SetearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
