@@ -15,6 +15,8 @@ namespace App_Gestión_de_Catálogo
     public partial class FormArticulo : Form
     {
         private Articulo articulo = null;
+        private List<Imagen> imagenes = new List<Imagen>();
+
         public FormArticulo()
         {
             InitializeComponent();
@@ -49,12 +51,38 @@ namespace App_Gestión_de_Catálogo
                 cbCategoria.SelectedValue = articulo.IdCategoria;
 
                 txtPrecio.Text = articulo.Precio.ToString();
+
+                // Traemos las imagenes ya guardadas de este articulo.
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                imagenes = imagenNegocio.ListarPorArticulo(articulo.Id);
+                CargarListaImagenes();
             }
         }
 
-        private void btnImagen_Click(object sender, EventArgs e)
+        private void CargarListaImagenes()
         {
+            listBoxImagenes.Items.Clear();
+            for (int i = 0; i < imagenes.Count; i++)
+            {
+                listBoxImagenes.Items.Add(imagenes[i].Url);
+            }
+        }
 
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtImagenUrl.Text))
+            {
+                MessageBox.Show("Ingrese una URL de imagen");
+                return;
+            }
+
+            Imagen nueva = new Imagen();
+            nueva.Url = txtImagenUrl.Text;
+
+            imagenes.Add(nueva);
+            CargarListaImagenes();
+
+            txtImagenUrl.Text = "";
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -63,9 +91,10 @@ namespace App_Gestión_de_Catálogo
             {
                 decimal precio = decimal.Parse(txtPrecio.Text);
 
-                if (articulo == null)
+                bool esNuevo = (articulo == null);
+
+                if (esNuevo)
                 {
-                    // Es un articulo nuevo
                     articulo = new Articulo();
                 }
 
@@ -78,13 +107,24 @@ namespace App_Gestión_de_Catálogo
 
                 ArticuloNegocio negocio = new ArticuloNegocio();
 
-                if (articulo.Id == 0)
+                if (esNuevo)
                 {
-                    negocio.Agregar(articulo);
+                    articulo.Id = negocio.Agregar(articulo);
                 }
                 else
                 {
                     negocio.Modificar(articulo);
+                }
+
+                // Guardamos solo las imagenes nuevas (las que todavia no tienen Id).
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                for (int i = 0; i < imagenes.Count; i++)
+                {
+                    if (imagenes[i].Id == 0)
+                    {
+                        imagenes[i].IdArticulo = articulo.Id;
+                        imagenNegocio.Agregar(imagenes[i]);
+                    }
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -96,6 +136,14 @@ namespace App_Gestión_de_Catálogo
             }
         }
 
-       
+        private void txtImagenUrl_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

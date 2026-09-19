@@ -40,9 +40,12 @@
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblImagen = new System.Windows.Forms.Label();
-            this.btnImagen = new System.Windows.Forms.Button();
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.txtImagenUrl = new System.Windows.Forms.TextBox();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
+            this.listBoxImagenes = new System.Windows.Forms.ListBox();
+            this.labelurl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -142,7 +145,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(212, 490);
+            this.btnAceptar.Location = new System.Drawing.Point(232, 499);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(6);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(150, 44);
@@ -160,17 +163,6 @@
             this.lblImagen.Size = new System.Drawing.Size(82, 25);
             this.lblImagen.TabIndex = 13;
             this.lblImagen.Text = "Imagen";
-            // 
-            // btnImagen
-            // 
-            this.btnImagen.Location = new System.Drawing.Point(232, 400);
-            this.btnImagen.Margin = new System.Windows.Forms.Padding(6);
-            this.btnImagen.Name = "btnImagen";
-            this.btnImagen.Size = new System.Drawing.Size(150, 44);
-            this.btnImagen.TabIndex = 14;
-            this.btnImagen.Text = "Seleccionar";
-            this.btnImagen.UseVisualStyleBackColor = true;
-            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
             // 
             // cbMarca
             // 
@@ -190,14 +182,56 @@
             this.cbCategoria.Size = new System.Drawing.Size(196, 33);
             this.cbCategoria.TabIndex = 16;
             // 
+            // txtImagenUrl
+            // 
+            this.txtImagenUrl.Location = new System.Drawing.Point(232, 410);
+            this.txtImagenUrl.Name = "txtImagenUrl";
+            this.txtImagenUrl.Size = new System.Drawing.Size(196, 31);
+            this.txtImagenUrl.TabIndex = 17;
+            this.txtImagenUrl.TextChanged += new System.EventHandler(this.txtImagenUrl_TextChanged);
+            // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAgregarImagen.Location = new System.Drawing.Point(232, 447);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(200, 43);
+            this.btnAgregarImagen.TabIndex = 18;
+            this.btnAgregarImagen.Text = "Agregar imagen";
+            this.btnAgregarImagen.UseVisualStyleBackColor = false;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
+            // 
+            // listBoxImagenes
+            // 
+            this.listBoxImagenes.FormattingEnabled = true;
+            this.listBoxImagenes.ItemHeight = 25;
+            this.listBoxImagenes.Location = new System.Drawing.Point(519, 115);
+            this.listBoxImagenes.Name = "listBoxImagenes";
+            this.listBoxImagenes.Size = new System.Drawing.Size(375, 404);
+            this.listBoxImagenes.TabIndex = 19;
+            // 
+            // labelurl
+            // 
+            this.labelurl.AutoSize = true;
+            this.labelurl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelurl.Location = new System.Drawing.Point(595, 54);
+            this.labelurl.Name = "labelurl";
+            this.labelurl.Size = new System.Drawing.Size(195, 33);
+            this.labelurl.TabIndex = 20;
+            this.labelurl.Text = "Listado de Url";
+            this.labelurl.Click += new System.EventHandler(this.label1_Click);
+            // 
             // FormArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 558);
+            this.ClientSize = new System.Drawing.Size(923, 558);
+            this.Controls.Add(this.labelurl);
+            this.Controls.Add(this.listBoxImagenes);
+            this.Controls.Add(this.btnAgregarImagen);
+            this.Controls.Add(this.txtImagenUrl);
             this.Controls.Add(this.cbCategoria);
             this.Controls.Add(this.cbMarca);
-            this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.lblImagen);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtPrecio);
@@ -233,8 +267,11 @@
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label lblImagen;
-        private System.Windows.Forms.Button btnImagen;
         private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.ComboBox cbCategoria;
+        private System.Windows.Forms.TextBox txtImagenUrl;
+        private System.Windows.Forms.Button btnAgregarImagen;
+        private System.Windows.Forms.ListBox listBoxImagenes;
+        private System.Windows.Forms.Label labelurl;
     }
 }
