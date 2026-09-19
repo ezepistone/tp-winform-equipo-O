@@ -29,7 +29,7 @@ namespace App_Gestión_de_Catálogo
             dgv.Columns["IdCategoria"].Visible = false;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void BtnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
@@ -43,13 +43,13 @@ namespace App_Gestión_de_Catálogo
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void BtnAgregar_Click(object sender, EventArgs e)
         {
              { FormArticulo frm = new FormArticulo(); frm.ShowDialog(); } 
 
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void BtnModificar_Click(object sender, EventArgs e)
         {
             if(dgv.CurrentRow != null)
             {
@@ -64,7 +64,7 @@ namespace App_Gestión_de_Catálogo
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void BtnEliminar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado;
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -90,7 +90,7 @@ namespace App_Gestión_de_Catálogo
             }
         }
 
-        private void btnVerDetalle_Click(object sender, EventArgs e)
+        private void BtnVerDetalle_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentRow != null)
             {
@@ -105,7 +105,7 @@ namespace App_Gestión_de_Catálogo
             }
         }
 
-        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -116,7 +116,7 @@ namespace App_Gestión_de_Catálogo
             }
         }
 
-        private void btnReiniciar_Click(object sender, EventArgs e)
+        private void BtnReiniciar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgv.DataSource = negocio.Listar();

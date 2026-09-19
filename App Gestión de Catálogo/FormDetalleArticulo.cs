@@ -63,7 +63,7 @@ namespace App_Gestión_de_Catálogo
             //}
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
