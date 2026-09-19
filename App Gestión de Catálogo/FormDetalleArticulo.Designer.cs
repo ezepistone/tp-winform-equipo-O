@@ -43,6 +43,8 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblPrecioDetalle = new System.Windows.Forms.Label();
             this.lblValorPrecio = new System.Windows.Forms.Label();
+            this.btnImagenAnterior = new System.Windows.Forms.Button();
+            this.btnImagenSiguiente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,9 +166,9 @@
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnCerrar.Location = new System.Drawing.Point(27, 291);
+            this.btnCerrar.Location = new System.Drawing.Point(41, 302);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(111, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(117, 23);
             this.btnCerrar.TabIndex = 12;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
@@ -191,11 +193,33 @@
             this.lblValorPrecio.TabIndex = 14;
             this.lblValorPrecio.Text = "label9";
             // 
+            // btnImagenAnterior
+            // 
+            this.btnImagenAnterior.Location = new System.Drawing.Point(41, 251);
+            this.btnImagenAnterior.Name = "btnImagenAnterior";
+            this.btnImagenAnterior.Size = new System.Drawing.Size(50, 23);
+            this.btnImagenAnterior.TabIndex = 15;
+            this.btnImagenAnterior.Text = "<";
+            this.btnImagenAnterior.UseVisualStyleBackColor = true;
+            this.btnImagenAnterior.Click += new System.EventHandler(this.btnImagenAnterior_Click);
+            // 
+            // btnImagenSiguiente
+            // 
+            this.btnImagenSiguiente.Location = new System.Drawing.Point(108, 251);
+            this.btnImagenSiguiente.Name = "btnImagenSiguiente";
+            this.btnImagenSiguiente.Size = new System.Drawing.Size(50, 23);
+            this.btnImagenSiguiente.TabIndex = 16;
+            this.btnImagenSiguiente.Text = ">";
+            this.btnImagenSiguiente.UseVisualStyleBackColor = true;
+            this.btnImagenSiguiente.Click += new System.EventHandler(this.btnImagenSiguiente_Click);
+            // 
             // FormDetalleArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 356);
+            this.Controls.Add(this.btnImagenSiguiente);
+            this.Controls.Add(this.btnImagenAnterior);
             this.Controls.Add(this.lblValorPrecio);
             this.Controls.Add(this.lblPrecioDetalle);
             this.Controls.Add(this.btnCerrar);
@@ -239,5 +263,7 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblPrecioDetalle;
         private System.Windows.Forms.Label lblValorPrecio;
+        private System.Windows.Forms.Button btnImagenAnterior;
+        private System.Windows.Forms.Button btnImagenSiguiente;
     }
 }

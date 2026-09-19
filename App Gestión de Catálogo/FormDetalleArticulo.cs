@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,9 @@ namespace App_Gestión_de_Catálogo
     public partial class FormDetalleArticulo : Form
     {
         private Articulo articulo;
-    
+        private List<Imagen> imagenes;
+        private int indiceimagenActual = 0;
+
         public FormDetalleArticulo(Articulo art)
         {
             InitializeComponent();
@@ -30,30 +33,38 @@ namespace App_Gestión_de_Catálogo
             lblValorDescripcion.Text = articulo.Descripcion;
             lblValorPrecio.Text = "$" + articulo.Precio.ToString("C");
             lblValorMarca.Text = articulo.Marca.Descripcion;
-            lblValorCategoria.Text =  articulo.Categoria.Descripcion;
+            lblValorCategoria.Text = articulo.Categoria.Descripcion;
 
             ImagenNegocio imagenNegocio = new ImagenNegocio();
-            List<Imagen> imagenes = imagenNegocio.ListarPorArticulo(articulo.Id);
+            imagenes = imagenNegocio.ListarPorArticulo(articulo.Id);
 
-            if(imagenes.Count > 0)
+            MostrarImagenActual();
+        }
+
+        private void MostrarImagenActual()
+        {
+            if (imagenes.Count > 0)
             {
                 try
                 {
-                    pbImagen.Load(imagenes[0].Url);
+                    pbImagen.Load(imagenes[indiceimagenActual].Url);
+
                 }
                 catch (Exception)
                 {
-                    pbImagen.Image = null; // O asignar una imagen predeterminada si la carga falla
-
+                    // Manejar la excepción si la imagen no se puede cargar
+                    pbImagen.Image = null;
                 }
-                // Mostrar la primera imagen como ejemplo
-                pbImagen.ImageLocation = imagenes[0].Url;
             }
             else
             {
-                // Si no hay imágenes, puedes mostrar una imagen predeterminada o dejar el PictureBox vacío
-                pbImagen.Image = null; // O asignar una imagen predeterminada
+                pbImagen.Image = null;
             }
+
+            btnImagenAnterior.Visible =imagenes.Count > 1;
+            btnImagenSiguiente.Visible = imagenes.Count > 1;
+
+
 
             // Cargar las imágenes del artículo
             //if (articulo.Imagenes.Count > 0)
@@ -66,6 +77,24 @@ namespace App_Gestión_de_Catálogo
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnImagenAnterior_Click(object sender, EventArgs e)
+        {
+            indiceimagenActual--;
+            if(indiceimagenActual<0)
+                indiceimagenActual = imagenes.Count - 1;
+
+            MostrarImagenActual();
+        }
+
+        private void btnImagenSiguiente_Click(object sender, EventArgs e)
+        {
+            indiceimagenActual++;
+            if(indiceimagenActual>= imagenes.Count)
+                indiceimagenActual = 0;
+
+            MostrarImagenActual();
         }
     }
 }
