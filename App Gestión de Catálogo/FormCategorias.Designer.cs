@@ -1,4 +1,6 @@
-﻿namespace App_Gestión_de_Catálogo
+﻿using System.Windows.Forms;
+
+namespace App_Gestión_de_Catálogo
 {
     partial class FormCategorias
     {
@@ -28,52 +30,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textTituloArticulos = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCategorias));
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textTituloArticulos
+            // dataGridView1
             // 
-            this.textTituloArticulos.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textTituloArticulos.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTituloArticulos.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.textTituloArticulos.Location = new System.Drawing.Point(24, 23);
-            this.textTituloArticulos.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.textTituloArticulos.Name = "textTituloArticulos";
-            this.textTituloArticulos.Size = new System.Drawing.Size(1548, 44);
-            this.textTituloArticulos.TabIndex = 2;
-            this.textTituloArticulos.Text = "CATEGORÍAS";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Location = new System.Drawing.Point(24, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(374, 87);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "TRAER DATOS";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 82;
+            this.dataGridView1.RowTemplate.Height = 33;
+            this.dataGridView1.Size = new System.Drawing.Size(568, 831);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FormCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1600, 865);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textTituloArticulos);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormCategorias";
-            this.Text = "FormCategorias";
+            this.Text = "Categorias";
+            this.Load += new System.EventHandler(this.FormCategorias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textTituloArticulos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
