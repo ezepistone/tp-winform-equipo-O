@@ -34,5 +34,10 @@ namespace App_Gestión_de_Catálogo
         {
 
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
