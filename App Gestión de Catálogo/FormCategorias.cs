@@ -25,7 +25,7 @@ namespace App_Gestión_de_Catálogo
             dataGridView1.DataSource = negocio.Listar();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click_1(object sender, EventArgs e)
         {
             FormCategoria nueva = new FormCategoria();
             nueva.ShowDialog();
@@ -75,5 +75,7 @@ namespace App_Gestión_de_Catálogo
                 MessageBox.Show("Seleccione una Categoria para eliminar.");
             }
         }
+
+        
     }
 }
