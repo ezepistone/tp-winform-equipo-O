@@ -24,6 +24,7 @@ namespace App_Gestión_de_Catálogo
         {
             InitializeComponent();
             this.marca = seleccionada;
+            txtNombre.Text = marca.Descripcion;
         }
 
 

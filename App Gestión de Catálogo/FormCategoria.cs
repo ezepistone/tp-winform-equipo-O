@@ -24,6 +24,7 @@ namespace App_Gestión_de_Catálogo
         {
             InitializeComponent();
             this.categoria = seleccionada;
+            txtNombre.Text = categoria.Descripcion;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
