@@ -6,13 +6,13 @@ Aplicación creada con .NET Winforms utilizando arquitectura separada en capas y
 
 ## Screenshots
 
-![App Screenshot](./Screenshots/menu-principal)
+![App Screenshot](./Screenshots/menu-principal.png)
 
-![App Screenshot](./Screenshots/gestion-articulos)
+![App Screenshot](./Screenshots/gestion-articulos.png)
 
-![App Screenshot](./Screenshots/modificar-articulo)
+![App Screenshot](./Screenshots/modificar-articulo.png)
 
-![App Screenshot](./Screenshots/gestion-categorias)
+![App Screenshot](./Screenshots/gestion-categorias.png)
 
-![App Screenshot](./Screenshots/gestion-marcas)
+![App Screenshot](./Screenshots/gestion-marcas.png)
 
